@@ -1,0 +1,92 @@
+<div ng-controller="kanbanController">
+    <div class="row">
+        <div class="col s12 m12 l12 xl12 center">
+            <a class="cursor-pointer btn waves-effect waves-light kanban-action" ng-click="saveBoard()">Сохранить</a>
+        </div>
+    </div>
+    <div class="row center">
+        <div class="col s12 m12 l1 xl1">
+            <button type="button" class="btn-floating btn-large waves-effect waves-light teal cursor-move kanban-action"
+                    dnd-draggable="draggable()"
+                    dnd-effect-allowed="copy"
+                    ng-click="addItem()">
+                <i class="material-icons">add</i>
+            </button>
+        </div>
+        <div class="col s12 m12 l2 xl2 purple darken-2 kanban-state">
+            <p class="white-text text-transform-uppercase">Постановка</p>
+            <ul class="collection" dnd-list="board.states.staging">
+                <li class="collection-item"
+                    ng-repeat="item in board.states.staging"
+                    dnd-draggable="item"
+                    dnd-moved="board.states.staging.splice($index, 1)"
+                    dnd-effect-allowed="move"
+                    dnd-selected="board.selected = item"
+                    ng-class="{'selected': board.selected === item}"
+                    ng-include="'templates/item.html'">
+                </li>
+            </ul>
+        </div>
+        <div class="col s12 m12 l2 xl2 deep-purple darken-2 kanban-state">
+            <p class="white-text text-transform-uppercase">Разработка</p>
+            <ul class="collection" dnd-list="board.states.development">
+                <li class="collection-item"
+                    ng-repeat="item in board.states.development"
+                    dnd-draggable="item"
+                    dnd-moved="board.states.development.splice($index, 1)"
+                    dnd-effect-allowed="move"
+                    dnd-selected="board.selected = item"
+                    ng-class="{'selected': board.selected === item}"
+                    ng-include="'templates/item.html'">
+                </li>
+            </ul>
+        </div>
+        <div class="col s12 m12 l2 xl2 cyan darken-2 kanban-state">
+            <p class="white-text text-transform-uppercase">Тестирование</p>
+            <ul class="collection" dnd-list="board.states.testing">
+                <li class="collection-item"
+                    ng-repeat="item in board.states.testing"
+                    dnd-draggable="item"
+                    dnd-moved="board.states.testing.splice($index, 1)"
+                    dnd-effect-allowed="move"
+                    dnd-selected="board.selected = item"
+                    ng-class="{'selected': board.selected === item}"
+                    ng-include="'templates/item.html'">
+                </li>
+            </ul>
+        </div>
+        <div class="col s12 m12 l2 xl2 teal darken-2 kanban-state">
+            <p class="white-text text-transform-uppercase">UAT</p>
+            <ul class="collection" dnd-list="board.states.uat">
+                <li class="collection-item"
+                    ng-repeat="item in board.states.uat"
+                    dnd-draggable="item"
+                    dnd-moved="board.states.uat.splice($index, 1)"
+                    dnd-effect-allowed="move"
+                    dnd-selected="board.selected = item"
+                    ng-class="{'selected': board.selected === item}"
+                    ng-include="'templates/item.html'">
+                </li>
+            </ul>
+        </div>
+        <div class="col s12 m12 l2 xl2 green darken-2 kanban-state">
+            <p class="white-text text-transform-uppercase">Продуктив</p>
+            <ul class="collection" dnd-list="board.states.success">
+                <li class="collection-item"
+                    ng-repeat="item in board.states.success"
+                    dnd-draggable="item"
+                    dnd-moved="board.states.success.splice($index, 1)"
+                    dnd-effect-allowed="move"
+                    dnd-selected="board.selected = item"
+                    ng-class="{'selected': board.selected === item}"
+                    ng-include="'templates/item.html'">
+                </li>
+            </ul>
+        </div>
+        <div class="col s12 m12 l1 xl1">
+            <button type="button" class="btn-floating btn-large waves-effect waves-light red kanban-action" dnd-list="[]" ng-click="deleteItem()">
+                <i class="material-icons">delete</i>
+            </button>
+        </div>
+    </div>
+</div>

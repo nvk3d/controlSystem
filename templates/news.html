@@ -1,0 +1,55 @@
+<main>
+    <div class="progress">
+        <div class="indeterminate"></div>
+    </div>
+    <div class="section" ng-if="(data | newsFilter).length !== 0">
+        <div class="additional-container">
+            <table class="bordered centered highlight responsive-table">
+                <thead>
+                <tr>
+                    <th>Заголовок</th>
+                    <th>Контент</th>
+                    <th>Ключевая работа</th>
+                    <th>Новость</th>
+                    <th>Дата добавления</th>
+                    <th>Процент готовности</th>
+                </tr>
+                </thead>
+                <tbody class="data">
+                <tr ng-repeat="item in data | newsFilter |orderBy:'-date' ">
+                    <td class="input-field"><input ng-model="item.title" disabled></td>
+                    <td class="input-field"><textarea class="materialize-textarea" ng-model="item.content" disabled></textarea></td>
+                    <td>
+                        <p>
+                            <input type="checkbox" id="key_work_{{$index}}" ng-checked="item.is_key_work" ng-model="item.is_key_work" disabled/>
+                            <label for="key_work_{{$index}}">Ключевая работа</label>
+                        </p>
+                    </td>
+                    <td>
+                        <p>
+                            <input type="checkbox" id="news_{{$index}}" ng-checked="item.is_news" ng-model="item.is_news" disabled/>
+                            <label for="news_{{$index}}">Новость</label>
+                        </p>
+                    </td>
+                    <td>
+                        <p>{{item.date * 1000 | date:'HH:mm dd/MM'}}</p>
+                    </td>
+                    <td class="input-field">
+                        <input type="range" min="0" max="100" ng-model="item.percentage_of_readiness" disabled/>
+                        <p class="grey-text text-darken-2">Процент готовности:
+                            {{item.percentage_of_readiness}}%</p>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="section" ng-if="(data | newsFilter).length === 0">
+        <div class="container">
+            <div class="row center">
+                <p><i class="material-icons large grey-text text-darken-1">sentiment_very_dissatisfied</i></p>
+                <p class="flow-text grey-text text-darken-1">Новости не найдены</p>
+            </div>
+        </div>
+    </div>
+</main>

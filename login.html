@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="ru" ng-app="authenticationApp">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0"/>
+    <title>Console</title>
+
+    <!-- CSS -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="css/libs/materialize.min.css" type="text/css" rel="stylesheet" media="screen"/>
+    <link href="css/main.css" type="text/css" rel="stylesheet" media="screen"/>
+</head>
+
+<body class="grey lighten-4">
+
+<main>
+    <div class="section valign-wrapper height-100-vh" ng-controller="loginController">
+        <div class="container">
+            <div class="row">
+                <div class="col s12 m8 l6 xl6 offset-m2 offset-l3 offset-xl3">
+                    <div class="card-panel">
+                        <form ng-submit="login(data)">
+                            <div class="row">
+                                <div class="input-field col s12 m12 l12 xl12">
+                                    <input id="login" type="text" ng-model="data.login" class="validate" required>
+                                    <label for="login">Логин</label>
+                                </div>
+                                <div class="input-field col s12 m12 l12 xl12">
+                                    <input id="pwd" type="password" ng-model="data.pwd" class="validate" minlength="8" required>
+                                    <label for="pwd">Пароль</label>
+                                </div>
+                                <div class="col s12 m12 l12 xl12 right-align">
+                                    <i class="material-icons" ng-mouseenter="showPwd()" ng-mouseleave="hidePwd()" ng-bind="pwdVisibility"></i>
+                                </div>
+                            </div>
+                            <div class="row center">
+                                <button class="btn-large waves-effect waves-light" type="submit">Вход
+                                    <i class="material-icons right">exit_to_app</i>
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+
+<!-- JS -->
+<script src="js/libs/jquery-3.2.1.min.js"></script>
+<script src="js/libs/angular.min.js"></script>
+<script src="js/libs/angular-cookies.min.js"></script>
+<script src="js/libs/materialize.min.js"></script>
+
+<script src="js/authentication-app.js"></script>
+<script src="js/authentication-service.js"></script>
+
+<!-- CONTROLLERS -->
+<script src="js/controllers/login-controller.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,65 @@
+{
+  "selected": null,
+  "states": {
+    "staging": [
+      {
+        "id": "_9gfa505ww",
+        "date": 1505399042,
+        "title": "TEST1"
+      },
+      {
+        "id": "_zawd6xtzf",
+        "date": 1505399048,
+        "title": "TEST2"
+      },
+      {
+        "id": "_t1myxz7qm",
+        "date": 1505399059,
+        "title": "TEST5"
+      }
+    ],
+    "development": [
+      {
+        "id": "_okso9mtyh",
+        "date": 1505399064,
+        "title": "TEST6"
+      },
+      {
+        "id": "_9s2h9bow7",
+        "date": 1505399051,
+        "title": "TEST3"
+      }
+    ],
+    "testing": [
+      {
+        "id": "_7jk66wet3",
+        "date": 1505399068,
+        "title": "TEST7"
+      }
+    ],
+    "uat": [
+      {
+        "id": "_3mzwj2pbv",
+        "date": 1505399080,
+        "title": "TEST9"
+      },
+      {
+        "id": "_1718hzhvl",
+        "date": 1505399055,
+        "title": "TEST4"
+      },
+      {
+        "id": "_w9iegkhxa",
+        "date": 1505399073,
+        "title": "TEST8"
+      }
+    ],
+    "success": [
+      {
+        "id": "_qut4dtzqh",
+        "date": 1505399084,
+        "title": "TEST10"
+      }
+    ]
+  }
+}

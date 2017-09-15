@@ -1,0 +1,7 @@
+<div class="input-field">
+    <input type="text" placeholder="Заголовок" class="item-title" ng-model="item.title">
+</div>
+<div class="input-field">
+    <textarea class="materialize-textarea" ng-model="item.content" placeholder="Контент"></textarea>
+</div>
+<p class="right-align added grey-text text-darken-2">Добавлено: {{item.date * 1000 | date:'HH:mm dd/MM'}}</p>

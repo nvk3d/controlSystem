@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="ru" ng-app="consoleApp">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0"/>
+    <title>Console</title>
+
+    <!-- CSS -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="css/libs/materialize.min.css" type="text/css" rel="stylesheet" media="screen"/>
+    <link href="css/main.css" type="text/css" rel="stylesheet" media="screen"/>
+</head>
+
+<body class="grey lighten-4" ng-controller="mainController">
+
+<!-- МЕНЮ -->
+<ul id="slide-out" class="side-nav">
+    <li><a class="waves-effect" href="#!/home"><i class="material-icons">home</i>Главная</a></li>
+    <li><a class="waves-effect" href="#!/add"><i class="material-icons">add</i>Добавить</a></li>
+    <li><a class="waves-effect" href="#!/my"><i class="material-icons">person</i>Посмотреть только мои</a></li>
+    <li><a class="waves-effect" href="#!/others"><i class="material-icons">people</i>Посмотреть записи других</a></li>
+    <li><a class="waves-effect" href="#!/news"><i class="material-icons">format_list_bulleted</i>Новости</a></li>
+    <li><a class="waves-effect" href="#!/logout"><i class="material-icons">input</i>Выход</a></li>
+</ul>
+<a data-activates="slide-out" class="button-collapse show-on-large grey-text text-lighten-4 cursor-pointer"><i class="material-icons medium teal hoverable">menu</i></a>
+<!-- МЕНЮ -->
+
+<!-- КОНТЕЙНЕР -->
+<ng-view></ng-view>
+<!-- КОНТЕЙНЕР -->
+
+<!-- КАНБАН ДОСКА -->
+<div class="section kanban-board" ng-show="kanban == true" ng-include="'templates/kanban-board.html'">
+</div>
+<!-- КАНБАН ДОСКА -->
+
+<div class="fixed-action-btn">
+    <a class="btn-floating btn-large teal waves-effect waves-light" ng-init="kanban = false" ng-click="kanban = !kanban">
+        <i class="large material-icons">done</i>
+    </a>
+</div>
+
+<!-- JS -->
+<script src="js/libs/jquery-3.2.1.min.js"></script>
+<script src="js/libs/angular.min.js"></script>
+<script src="js/libs/angular-cookies.min.js"></script>
+<script src="js/libs/angular-route.min.js"></script>
+<script src="js/libs/angular-drag-and-drop-lists.min.js"></script>
+<script src="js/libs/materialize.min.js"></script>
+<script src="js/console-app.js"></script>
+<script src="js/authentication-service.js"></script>
+<script src="js/filters/date-filter.js"></script>
+<script src="js/filters/author-filter.js"></script>
+<script src="js/filters/news-filter.js"></script>
+
+<!-- CONTROLLERS -->
+<script src="js/controllers/main-controller.js"></script>
+<script src="js/controllers/kanban-controller.js"></script>
+<script src="js/controllers/home-controller.js"></script>
+<script src="js/controllers/add-controller.js"></script>
+<script src="js/controllers/my-controller.js"></script>
+<script src="js/controllers/news-controller.js"></script>
+<script src="js/controllers/others-controller.js"></script>
+
+</body>
+</html>
