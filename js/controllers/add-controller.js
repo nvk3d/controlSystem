@@ -1,4 +1,4 @@
-app.controller("addController", function ($scope, $http, $cookies){
+app.controller("addController", function ($scope, $http, $cookies, $timeout){
 
     $scope.id = $cookies.get(AUTHENTICATION);
 
@@ -7,8 +7,12 @@ app.controller("addController", function ($scope, $http, $cookies){
         to: null
     };
 
-    $scope.data = [];
+    $scope.additionalFilter = 'my';
 
+    $scope.status = {};
+
+    $scope.data = [];
+    initViews();
     initFilter();
     initData();
 
@@ -22,6 +26,21 @@ app.controller("addController", function ($scope, $http, $cookies){
      */
     $scope.updateStatus = function (item){
         //ToDo: привязать ajax.
+    };
+
+    $scope.copyStatus = function (item){
+      $scope.status.title = item.title;
+      $scope.status.content = item.content;
+      $scope.status.isKeyWork = item.is_key_work;
+      $scope.status.isNews = item.is_news;
+      $scope.status.percentageOfReadiness = item.percentage_of_readiness;
+      $scope.isNewTitle = true;
+      $timeout(function (){
+          Materialize.updateTextFields();
+          angular.element(
+              document.getElementsByClassName('modal')
+          ).modal('close');
+      }, 100)
     };
 
     /**
@@ -83,6 +102,11 @@ app.controller("addController", function ($scope, $http, $cookies){
          * В error callback выводим ошибку. Materialize.toast('Ошибка отправки данных!', 5000);
          */
 
+        if (status.title === null){
+            Materialize.toast('Выберите заголовок!', 5000);
+            return;
+        }
+
         //ToDo: удалить push ниже после привязки к ajax.
         $scope.data.push(
             {
@@ -111,13 +135,23 @@ app.controller("addController", function ($scope, $http, $cookies){
         $scope.status.isKeyWork = false;
         $scope.status.isNews = false;
         $scope.status.percentageOfReadiness = 50;
-        angular.element(
-            document.querySelector('#title')
-        ).removeClass('valid');
+        $timeout(function (){
+            Materialize.updateTextFields();
 
+            angular.element(
+                document.querySelector('#title')
+            ).removeClass('valid');
+
+            angular.element(
+                document.querySelector('.materialize-textarea')
+            ).trigger('autoresize');
+        }, 100)
+    }
+
+    function initViews(){
         angular.element(
-            document.querySelector('.materialize-textarea')
-        ).trigger('autoresize');
+            document.getElementsByClassName('modal')
+        ).modal();
     }
 
 });

@@ -7,7 +7,9 @@ const ROUTERS = [
     '/logout',
     '/my',
     '/others',
-    '/news'
+    '/news',
+    '/kanban',
+    '/charts'
 ];
 
 var app = angular.module("consoleApp", ['ngRoute', 'ngCookies', 'dndLists'])
@@ -32,6 +34,14 @@ var app = angular.module("consoleApp", ['ngRoute', 'ngCookies', 'dndLists'])
         $routeProvider.when(ROUTERS[5], {
             templateUrl: VIEWS_DIRECTORY + 'news.html',
             controller: 'newsController'
+        });
+        $routeProvider.when(ROUTERS[6], {
+            templateUrl: VIEWS_DIRECTORY + 'kanban.html',
+            controller: 'kanbanController'
+        });
+        $routeProvider.when(ROUTERS[7], {
+            templateUrl: VIEWS_DIRECTORY + 'charts.html',
+            controller: 'chartsController'
         });
         $routeProvider.otherwise({
             redirectTo: '/home'

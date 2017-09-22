@@ -1,8 +1,23 @@
 <main>
+    <div class="section teal">
+        <div class="container">
+            <div class="row">
+                <p class="flow-text white-text text-transform-uppercase font-weight-700">Диапазон поиска:</p>
+            </div>
+            <div class="row">
+                <div class="col s12 m6 l6 xl6">
+                    <input type="text" class="datepicker" id="date_from" disabled placeholder="Дата (от)" data-filter="from">
+                </div>
+                <div class="col s12 m6 l6 xl6">
+                    <input type="text" class="datepicker" id="date_to" disabled placeholder="Дата (до)" data-filter="to">
+                </div>
+            </div>
+        </div>
+    </div>
     <div class="progress">
         <div class="indeterminate"></div>
     </div>
-    <div class="section" ng-if="(data | authorFilter:filter).length !== 0">
+    <div class="section" ng-if="((data | authorFilter:filter) | dateFilter:additionalFilter).length !== 0">
         <div class="additional-container">
             <table class="bordered centered highlight responsive-table">
                 <thead>
@@ -17,7 +32,7 @@
                 </tr>
                 </thead>
                 <tbody class="data">
-                <tr ng-repeat="item in data | authorFilter:filter | orderBy:'-date' " ng-class="{'teal lighten-4': item.is_news === true}">
+                <tr ng-repeat="item in data | authorFilter:filter | dateFilter:additionalFilter | orderBy:'-date' " ng-class="{'teal lighten-4': item.is_news === true}">
                     <td class="input-field"><input ng-model="item.title" ng-disabled="{{item.author != id}}"></td>
                     <td class="input-field"><textarea class="materialize-textarea" ng-model="item.content" ng-disabled="{{item.author != id}}"></textarea></td>
                     <td>
@@ -48,11 +63,11 @@
             </table>
         </div>
     </div>
-    <div class="section" ng-if="(data | authorFilter:filter).length === 0">
+    <div class="section" ng-if="((data | authorFilter:filter) | dateFilter:additionalFilter).length === 0">
         <div class="container">
             <div class="row center">
                 <p><i class="material-icons large grey-text text-darken-1">sentiment_very_dissatisfied</i></p>
-                <p class="flow-text grey-text text-darken-1">Записи других пользователей не найдены</p>
+                <p class="flow-text grey-text text-darken-1">Записи других пользователей за выбранный период не найдены</p>
             </div>
         </div>
     </div>

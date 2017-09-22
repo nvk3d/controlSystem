@@ -21,6 +21,8 @@
     <li><a class="waves-effect" href="#!/my"><i class="material-icons">person</i>Посмотреть только мои</a></li>
     <li><a class="waves-effect" href="#!/others"><i class="material-icons">people</i>Посмотреть записи других</a></li>
     <li><a class="waves-effect" href="#!/news"><i class="material-icons">format_list_bulleted</i>Новости</a></li>
+    <li><a class="waves-effect" href="#!/kanban"><i class="material-icons">apps</i>Канбан доска</a></li>
+    <li><a class="waves-effect" href="#!/charts"><i class="material-icons">insert_chart</i>Графики</a></li>
     <li><a class="waves-effect" href="#!/logout"><i class="material-icons">input</i>Выход</a></li>
 </ul>
 <a data-activates="slide-out" class="button-collapse show-on-large grey-text text-lighten-4 cursor-pointer"><i class="material-icons medium teal hoverable">menu</i></a>
@@ -30,18 +32,8 @@
 <ng-view></ng-view>
 <!-- КОНТЕЙНЕР -->
 
-<!-- КАНБАН ДОСКА -->
-<div class="section kanban-board" ng-show="kanban == true" ng-include="'templates/kanban-board.html'">
-</div>
-<!-- КАНБАН ДОСКА -->
-
-<div class="fixed-action-btn">
-    <a class="btn-floating btn-large teal waves-effect waves-light" ng-init="kanban = false" ng-click="kanban = !kanban">
-        <i class="large material-icons">done</i>
-    </a>
-</div>
-
 <!-- JS -->
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 <script src="js/libs/jquery-3.2.1.min.js"></script>
 <script src="js/libs/angular.min.js"></script>
 <script src="js/libs/angular-cookies.min.js"></script>
@@ -56,6 +48,7 @@
 
 <!-- CONTROLLERS -->
 <script src="js/controllers/main-controller.js"></script>
+<script src="js/controllers/charts-controller.js"></script>
 <script src="js/controllers/kanban-controller.js"></script>
 <script src="js/controllers/home-controller.js"></script>
 <script src="js/controllers/add-controller.js"></script>

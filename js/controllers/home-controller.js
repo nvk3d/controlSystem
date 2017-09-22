@@ -114,7 +114,6 @@ app.controller("homeController", function ($scope, $http, $cookies){
         angular.element(
             document.querySelector('#date_to')
         ).val(date.getFullYear() + '-' + (date.getMonth() + 1) + '-' + date.getDate());
-
     }
 
 

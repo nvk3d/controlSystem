@@ -28,6 +28,10 @@ main {
     margin-top: 0;
 }
 
+.margin-top-1-rem{
+    margin-top: 1rem;
+}
+
 .font-weight-700{
     font-weight: 700;
 }
@@ -137,11 +141,28 @@ ul[dnd-list] li.selected{
     text-align: center;
 }
 
+.fullscreen-preloader{
+    display: flex;
+    width: 100%;
+    height: calc(100vh - 16rem);
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
 
+.chart{
+    width: 100%;
+    height: auto;
+    min-height: 384px;
+}
 
 
 @media only screen and (max-width: 992px) {
     header, main, footer {
         padding-left: 0;
+    }
+
+    .chart{
+        min-height: 0;
     }
 }

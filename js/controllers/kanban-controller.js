@@ -79,7 +79,12 @@ app.controller("kanbanController", function ($scope, $http){
         if ($scope.board.selected === null)
             return;
 
-        if (!confirm('Удалить элемент "' + $scope.board.selected.title + '"?'))
+        var itemTitle = 'без имени';
+
+        if (typeof ($scope.board.selected.title) !== "undefined")
+            itemTitle = $scope.board.selected.title;
+
+        if (!confirm('Удалить элемент ' + itemTitle + '?'))
             return;
 
         if (indexOf($scope.board.states.staging, $scope.board.selected.id) !== -1){
@@ -150,7 +155,6 @@ app.controller("kanbanController", function ($scope, $http){
      * @return {{id: string, date: number}}
      */
     function item(){
-
         return {
             id: '_' + Math.random().toString(36).substr(2, 9),
             date: Math.floor(new Date() / 1000)
